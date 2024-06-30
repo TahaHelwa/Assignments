@@ -39,7 +39,7 @@ export const getAuther = async (req, res, next) => {
   try {
     // get the id form the user
     const { id } = req.params;
-    const findAuther = await Auther.findById({ _id: id });
+    const findAuther = await Auther.findById({ _id: id }).populate("books");
     if (!findAuther)
       return res.status(404).json({ MSG: "This Auther is not here" });
     return res.status(200).json(findAuther);
