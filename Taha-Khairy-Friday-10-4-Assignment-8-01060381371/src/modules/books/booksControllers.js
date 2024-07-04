@@ -52,6 +52,32 @@ export const getAllBooks = async (req, res, next) => {
       .json({ msg: "Error in getAllBooks api ", error: error.message });
   }
 };
+// add a new feature
+export const getBooksWithLimits = async (req, res) => {
+  try {
+    const { page = 1, limit = 10, title, author } = req.query;
+
+    const query = {};
+    if (title) query.title = new RegExp(title, "i");
+    if (author) query.author = new RegExp(author, "i");
+
+    const books = await book
+      .find(query)
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec();
+
+    const count = await book.countDocuments(query);
+
+    res.status(200).json({
+      books,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
 // API for getting a book by id
 export const getBook = async (req, res, next) => {
   try {

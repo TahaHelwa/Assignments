@@ -35,10 +35,38 @@ export const getAllAuthers = async (req, res, next) => {
   }
   // get authers
 };
+// add a new feature
+export const getAutherWithLimits = async (req, res) => {
+  try {
+    const { page = 1, limit = 10, name, bio } = req.query;
+
+    const query = {};
+
+    if (name) query.name = new RegExp(name, "i");
+    if (bio) query.bio = new RegExp(bio, "i");
+
+    const authers = await Auther.find(query)
+      .limit(limit * 1)
+      .skip((page - 1) * limit)
+      .exec();
+
+    const count = await Auther.countDocuments(query);
+
+    res.status(200).json({
+      authers,
+      totalPages: Math.ceil(count / limit),
+      currentPage: page,
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const getAuther = async (req, res, next) => {
   try {
     // get the id form the user
     const { id } = req.params;
+    // get books data in auther data by using populate .
     const findAuther = await Auther.findById({ _id: id }).populate("books");
     if (!findAuther)
       return res.status(404).json({ MSG: "This Auther is not here" });
