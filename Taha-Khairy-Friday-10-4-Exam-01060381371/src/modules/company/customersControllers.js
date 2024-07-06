@@ -1,0 +1,136 @@
+import { Customer } from "../../../DB/Models/Customers.models.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { ObjectId } from "mongodb";
+export const signup = async (req, res, next) => {
+  // name , email , password , phoneNumber .
+  const { name, email, password, phoneNumber } = req.body;
+  try {
+    const existCustomer = await Customer.findOne({ email });
+    if (existCustomer) {
+      return res
+        .status(400)
+        .json({ message: "this customer is aready exist!" });
+    }
+    const hashedpassword = bcrypt.hashSync(password, 10);
+    const newCustomer = await Customer.insertOne({
+      name,
+      email,
+      password: hashedpassword,
+      phoneNumber,
+    });
+    return res
+      .status(201)
+      .json({ message: "Success adding a new customer", newCustomer });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ Message: "Signup API Error: ", error: error.message });
+  }
+};
+export const signIn = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+
+    const emailExist = await Customer.findOne({ email });
+    if (!emailExist)
+      return res.status(401).json({ message: "Customer Not Found" });
+
+    const validPassword = bcrypt.compareSync(password, emailExist.password);
+
+    if (!validPassword)
+      return res.status(401).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign(
+      { id: emailExist._id, email: emailExist.email },
+      "accessTokenSignature",
+      { expiresIn: "1h" }
+    );
+    return res.status(202).json({ Message: "Success Login", token: token });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ Message: "Signin API Error: ", error: error.message });
+  }
+};
+export const getUser = async (req, res, next) => {
+  try {
+    const { _id } = req.params;
+    const isExist = await Customer.findOne({ _id: new ObjectId(_id) });
+    if (!isExist) return res.status(404).json({ msg: "Customer Not Found" });
+    return res.status(202).json({ msg: isExist });
+  } catch (error) {
+    return res.status(500).json({ msg: "Get Customer Error" + error.message });
+  }
+};
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const allCustomers = await Customer.find().toArray();
+    if (!allCustomers)
+      return res.status(404).json({ message: "there is not customers now!" });
+    return res.status(200).json({ Customers: allCustomers });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: "Get All Cutomers API Error: " + error.message });
+  }
+};
+export const updateUser = async (req, res, next) => {
+  try {
+    //const { _id } = req.params;
+    const { name, email } = req.body;
+    const { token } = req.headers;
+    // Validate ObjectId before converting it
+    // if (!ObjectId.isValid(_id)) {
+    //   return res.status(400).json({ msg: "This ID is not valid" });
+    // }
+    const decodedData = jwt.verify(token, "accessTokenSignature");
+
+    const isExist = await Customer.findOne(decodedData._id);
+    // check if ID is exist Or not
+    if (!isExist) return res.status(404).json({ msg: "this Id is not here" });
+
+    const result = await Customer.updateOne(
+      { _id: decodedData._id },
+      { $set: { name, email } },
+      { returnDocument: "after" }
+    );
+    return res.status(200).json({ msg: "successful update", data: result });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: "Update User API Error: " + error.message });
+  }
+};
+export const deleteUser = async (req, res, next) => {
+  try {
+    const { token } = req.headers;
+    // Validate ObjectId before converting it
+    // if (!ObjectId.isValid(_id)) {
+    //   return res.status(400).json({ msg: "This ID is not valid" });
+    // }
+    const decodedData = jwt.verify(token, "accessTokenSignature");
+    // Check if the user exists
+    const isExist = await Customer.find({ _id: decodedData.id });
+    if (!isExist) {
+      return res
+        .status(404)
+        .json({ msg: "This customer is already not dddhere" });
+    }
+
+    // delete operation
+    const result = await Customer.deleteOne({
+      _id: new ObjectId(decodedData.id),
+    });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ msg: "This customer is already not here" });
+    }
+
+    // Return Successful Message and the result
+    return res.status(200).json({ msg: "Success Delete", data: result });
+  } catch (error) {
+    return res
+      .status(500)
+      .json({ msg: "Delete User API Error: " + error.message });
+  }
+};
