@@ -1,7 +1,7 @@
 import User from "../../../DB/Models/User.models.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import mongoose, { isObjectIdOrHexString } from "mongoose";
+import mongoose from "mongoose";
 // Sign Up API
 export const signUp = async (req, res, next) => {
   // destracting data from the user
@@ -202,8 +202,6 @@ export const updatePassword = async (req, res, next) => {
   }
 };
 
-export const forgetPassword = async (req, res, next) => {};
-
 export const getAllAccounts = async (req, res, next) => {
   try {
     const { recoveryEmail } = req.query;
@@ -217,3 +215,5 @@ export const getAllAccounts = async (req, res, next) => {
       .json({ msg: "Internal Server Error", error: error.message });
   }
 };
+
+export const forgetPassword = async (req, res, next) => {};
