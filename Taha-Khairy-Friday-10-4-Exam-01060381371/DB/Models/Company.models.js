@@ -20,7 +20,8 @@ const companySchema = new mongoose.Schema(
       required: true,
     },
     numberOfEmployees: {
-      type: Integer,
+      type: String,
+      enum: ["1-10", "11-20", "21-50", "51-100", "101-200", "201-500", "500+"],
       required: true,
     },
     companyEmail: {

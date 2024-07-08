@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     DOB: {
-      type: date,
+      type: Date,
       required: true,
     },
     mobileNumber: {
@@ -49,5 +49,6 @@ const userSchema = new mongoose.Schema(
   },
   { timestamp: true }
 );
+
 const User = mongoose.model("User", userSchema);
 export default User || mongoose.models.User;
