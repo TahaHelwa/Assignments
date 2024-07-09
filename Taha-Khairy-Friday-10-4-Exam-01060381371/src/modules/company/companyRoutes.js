@@ -36,7 +36,7 @@ companyRouter.get(
   companyControllers.searchForCompanyWithName
 );
 companyRouter.get(
-  "/getall/:jopId",
+  "/getall/:jobId",
   authenticate,
   authorizeRole("Company_HR"),
   companyControllers.getAllApplicationsForSpecificJop

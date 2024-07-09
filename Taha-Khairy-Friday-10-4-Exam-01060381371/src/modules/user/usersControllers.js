@@ -74,7 +74,7 @@ export const signIn = async (req, res, next) => {
       { id: user._id, email: user.email },
       "JopSearch&#$",
       {
-        expiresIn: "1h",
+        expiresIn: "1d",
       }
     );
     return res.status(200).json({ Msg: "Success SignIn", token });

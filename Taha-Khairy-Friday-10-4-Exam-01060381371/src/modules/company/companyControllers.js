@@ -1,7 +1,5 @@
 import Company from "../../../DB/Models/Company.models.js";
-import User from "../../../DB/Models/User.models.js";
 import Application from "../../../DB/Models/Application.models.js";
-import Jop from "../../../DB/Models/Jop.models.js";
 import { isValidObjectId } from "mongoose";
 
 export const addCompany = async (req, res, next) => {
@@ -135,6 +133,14 @@ export const searchForCompanyWithName = async (req, res, next) => {
 
 export const getAllApplicationsForSpecificJop = async (req, res, next) => {
   try {
+    const { jobId } = req.params;
+
+    const applications = await Application.find({ jobId: jobId })
+      .populate("userId", "-password")
+      .populate("jopId");
+    if (!applications.length)
+      return res.status(400).json({ msg: "Their is no Applications" });
+    return res.status(200).json(applications);
   } catch (error) {
     return res
       .status(500)

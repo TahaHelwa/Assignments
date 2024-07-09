@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
-const jopSchema = new mongoose.Schema(
+const jobSchema = new mongoose.Schema(
   {
-    jopTitle: {
+    jobTitle: {
       required: true,
       type: String,
     },
-    jopLocation: {
+    jobLocation: {
       type: String,
       enum: ["Onsite", "Remotely", "Hybrid"],
       required: true,
@@ -41,5 +41,5 @@ const jopSchema = new mongoose.Schema(
   },
   { timestamp: true }
 );
-const Jop = mongoose.model("Jop", jopSchema);
-export default Jop || mongoose.models.Jop;
+const Job = mongoose.model("Job", jobSchema);
+export default Job || mongoose.models.Job;

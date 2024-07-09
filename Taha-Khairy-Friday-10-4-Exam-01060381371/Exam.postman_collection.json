@@ -1,0 +1,680 @@
+{
+	"info": {
+		"_postman_id": "3a623a7c-e853-446f-9347-9c58309ca0ea",
+		"name": "Exam",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29821475"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "SignUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n  \"firstName\": \"Mohamed\",\r\n  \"lastName\": \"Hussein\",\r\n  \"email\": \"MohamedHussein@gmail.com\",\r\n  \"password\": \"Mohmaed123\",\r\n  \"recoveryEmail\": \"mas3ode20@gmail.com\",\r\n  \"DOB\": \"1990-01-01\",\r\n  \"mobileNumber\": \"01060381371\",\r\n  \"role\": \"Company_HR\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"identifier\": \"MohamedHussein@gmail.com\",\r\n    \"password\": \"Mohmaed123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/signin",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGFiMDRkNzUwMDM2NDFiNGU1YmExNiIsImVtYWlsIjoiR2xhZGlhdG9yQGdtYWlsLmNvbSIsImlhdCI6MTcyMDQ0MjkyNSwiZXhwIjoxNzIwNDQ2NTI1fQ.gHsEMpaIRPjx7K7P1tcgBP0XBqqujsZTyouA3xqGyxg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"email\":\"Gladiator@gmail.com\",\r\n      \"mobileNumber\":\"123456789\",\r\n      \"recoveryEmail\":\"recovery@example.com\",\r\n      \"DOB\":\"2000-01-01\",\r\n      \"lastName\":\"toto\",\r\n      \"firstName\":\"nono\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/update",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGFiMDRkNzUwMDM2NDFiNGU1YmExNiIsImVtYWlsIjoiR2xhZGlhdG9yQGdtYWlsLmNvbSIsImlhdCI6MTcyMDQzODY0NSwiZXhwIjoxNzIwNDM4NjQ1fQ.KLUh-yBxUuewilw5F9da2N4q0InldO8lxC1xkT5Ugx4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/delete",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUserData",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQyMTQ4LCJleHAiOjE3MjA1NDU3NDh9.rwUKF7dSK6WqFvaEtcuLl2c1YxV94bCBS_3UvoqF5nM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/users/getuserdata",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"getuserdata"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getProfile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"toto11\",\r\n    \"email\" :\"toto11@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/getprofile?userId=668ab04d75003641b4e5ba16",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"getprofile"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "668ab04d75003641b4e5ba16"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGFiMDRkNzUwMDM2NDFiNGU1YmExNiIsImVtYWlsIjoiR2xhZGlhdG9yQGdtYWlsLmNvbSIsImlhdCI6MTcyMDQ0MjU0MSwiZXhwIjoxNzIwNDQ2MTQxfQ.K9skC_CL09dfGzEedP9lBQUdDPDnSNnZI8xqQA8WLIs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"GL123GL\",\r\n    \"newPassword\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/updatepassword",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"updatepassword"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetemailsWithRecoveryMails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/getaccounts?recoveryEmail=recovery@example.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"getaccounts"
+							],
+							"query": [
+								{
+									"key": "recoveryEmail",
+									"value": "recovery@example.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "addCompany",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQ1ODE5LCJleHAiOjE3MjA2MzIyMTl9.dM1N2FQKCRs_esucF5qx-3UwN25m7SfYMtwAHmCZh4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\":\"Molo5yato\",\r\n    \"description\":\"Bn3ml Molo5yato\",\r\n    \"industry\":\"Food\",\r\n    \"address\":\"23 fahd street HD\",\r\n    \"numberOfEmployees\":\"21-50\",\r\n    \"companyEmail\":\"Molo5yato@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/companys/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companys",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateCompany",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNDYxNDc5LCJleHAiOjE3MjA0NjUwNzl9._KC282zjuDgRVhsuaLIcDx7a-wH1Yw_zpCVb-lDLwwQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\":\"Molo5ya\",\r\n    \"description\":\"Bn3ml Molo5ya\",\r\n    \"industry\":\"Foods\",\r\n    \"address\":\"23 fahd street\",\r\n    \"numberOfEmployees\":\"1-10\",\r\n    \"companyEmail\":\"Molo5ya@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/companys/update/668c21b0905cf20bdd05a2f8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companys",
+								"update",
+								"668c21b0905cf20bdd05a2f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCompany",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNDc3OTIxLCJleHAiOjE3MjA0ODE1MjF9.whOsQs-Epybvzrhd__U4vpzQ7xepR9ePWAOeiwSSfiI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/companys/delete/668c2aa08c05accced10d35e",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companys",
+								"delete",
+								"668c2aa08c05accced10d35e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNDc3OTIxLCJleHAiOjE3MjA0ODE1MjF9.whOsQs-Epybvzrhd__U4vpzQ7xepR9ePWAOeiwSSfiI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/companys/get/668c21b0905cf20bdd05a2f8",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companys",
+								"get",
+								"668c21b0905cf20bdd05a2f8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCompanyWithName",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNDc3OTIxLCJleHAiOjE3MjA0ODE1MjF9.whOsQs-Epybvzrhd__U4vpzQ7xepR9ePWAOeiwSSfiI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/companys/search?companyName=molo5ya",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companys",
+								"search"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "molo5ya"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllApplicationsForSpecificJop",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQ1ODE5LCJleHAiOjE3MjA2MzIyMTl9.dM1N2FQKCRs_esucF5qx-3UwN25m7SfYMtwAHmCZh4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/companys/getall/668d6c90cd406bd6af591d5c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companys",
+								"getall",
+								"668d6c90cd406bd6af591d5c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jops",
+			"item": [
+				{
+					"name": "addJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQyMTQ4LCJleHAiOjE3MjA1NDU3NDh9.rwUKF7dSK6WqFvaEtcuLl2c1YxV94bCBS_3UvoqF5nM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"jobTitle\":\"Frontend Developer\",\r\n    \"jobLocation\":\"Onsite\",\r\n    \"workingTime\":\"full-time\",\r\n    \"seniorityLevel\":\"Mid-Level\",\r\n    \"jobDescription\":\"Working in the user front pages for websites\",\r\n    \"technicalSkills\":\"Js\",\r\n    \"softSkills\":\"Comunications Skills\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/jobs/add",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNDg1OTkyLCJleHAiOjE3MjA0ODk1OTJ9.74ctywmTsJz1krW81PVyDuAJct_m7IbYAI8xvNen35o",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"seniorityLevel\":\"Senior\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/jobs/update/668c89d6b9f71cbbc74bd4ec",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"update",
+								"668c89d6b9f71cbbc74bd4ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNDg1OTkyLCJleHAiOjE3MjA0ODk1OTJ9.74ctywmTsJz1krW81PVyDuAJct_m7IbYAI8xvNen35o",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/jobs/delete/668c89d6b9f71cbbc74bd4ec",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"delete",
+								"668c89d6b9f71cbbc74bd4ec"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllWIthCompanyName",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQ1ODE5LCJleHAiOjE3MjA2MzIyMTl9.dM1N2FQKCRs_esucF5qx-3UwN25m7SfYMtwAHmCZh4Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/jobs/all?companyName=Molo5ya",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"all"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "Molo5ya"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetWithFillters",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQ1ODE5LCJleHAiOjE3MjA2MzIyMTl9.dM1N2FQKCRs_esucF5qx-3UwN25m7SfYMtwAHmCZh4Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/jobs/filter?workingTime=part-time",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "workingTime",
+									"value": "part-time"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJobsForSpecificCompany",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQ1ODE5LCJleHAiOjE3MjA2MzIyMTl9.dM1N2FQKCRs_esucF5qx-3UwN25m7SfYMtwAHmCZh4Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/jobs/company?companyName=Molo5ya",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"company"
+							],
+							"query": [
+								{
+									"key": "companyName",
+									"value": "Molo5ya"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ApplyJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authentication",
+								"value": "JopSearch eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGMxODc3ZjI3MzI1ZTY4ZDVmY2QzYSIsImVtYWlsIjoiTW9oYW1lZEh1c3NlaW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNTQ1ODE5LCJleHAiOjE3MjA2MzIyMTl9.dM1N2FQKCRs_esucF5qx-3UwN25m7SfYMtwAHmCZh4Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userTechSkills\":[\"js\",\"C++\",\"C\"], \r\n    \"userSoftSkills\":[\"Comunication Skills\"], \r\n    \"userResume\":\"app\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/jobs/apply/668d6c90cd406bd6af591d5c",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"jobs",
+								"apply",
+								"668d6c90cd406bd6af591d5c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,11 +1,20 @@
 import nodemailer from "nodemailer";
 
-export const sendEmailService = () => {
-  // transport configration
-  const transporter = nodemailer.createTransport({
-    host: "localhost",
-    port: 587, // 465 =>> secure => true
-    secure: false, // true for 465 false for ather ports , TLS
-    auth: {},
-  });
+const transporter = nodemailer.createTransport({
+  service: "Gmail",
+  auth: {
+    user: "mas3ode20@gmail.com",
+    pass: "",
+  },
+});
+
+export const sendEmail = (to, subject, text) => {
+  const mailOptions = {
+    from: "mas3ode20@gmail.com",
+    to,
+    subject,
+    text,
+  };
+
+  return transporter.sendMail(mailOptions);
 };

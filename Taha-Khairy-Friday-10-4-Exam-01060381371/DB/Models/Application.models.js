@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const appSchema = new mongoose.Schema(
   {
-    jopId: {
+    jobId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Jop",
+      ref: "Job",
       required: true,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "user",
+      ref: "User",
       required: true,
     },
     userTechSkills: {
