@@ -2,6 +2,8 @@ import { Router } from "express";
 import { authenticate } from "../../middlewares/authentication.middleware.js";
 import { authorizeRole } from "../../middlewares/authorization.middleware.js";
 import * as companyControllers from "./companyControllers.js";
+import { companyValidationSchema } from "../../utils/validationSchema.js";
+import validateRequest from "../../middlewares/validation.middleware.js";
 
 const companyRouter = Router();
 
@@ -9,12 +11,14 @@ companyRouter.post(
   "/add",
   authenticate,
   authorizeRole("Company_HR"),
+  validateRequest(companyValidationSchema),
   companyControllers.addCompany
 );
 companyRouter.put(
   "/update/:companyId",
   authenticate,
   authorizeRole("Company_HR"),
+  validateRequest(companyValidationSchema),
   companyControllers.updateCompanyData
 );
 companyRouter.delete(
