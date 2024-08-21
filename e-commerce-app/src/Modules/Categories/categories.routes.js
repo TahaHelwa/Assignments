@@ -4,7 +4,7 @@ import * as controller from "./categories.controller.js";
 // utils
 import { extensions } from "../../Utils/index.js";
 // middlewares
-import * as middlewares from "../../Middlewares/index.js";
+import * as middlewares from "../../middlewares/index.js";
 // models
 import { Category } from "../../../DB/Models/index.js";
 

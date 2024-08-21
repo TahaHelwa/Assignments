@@ -1,7 +1,8 @@
 import express from "express";
 import { config } from "dotenv";
 
-import { globaleResponse } from "./src/Middlewares/index.js";
+// Importing required modules and files
+import { globaleResponse } from "./src/middlewares/index.js";
 import db_connection from "./DB/connection.js";
 import * as router from "./src/Modules/index.js";
 
@@ -16,7 +17,9 @@ app.use("/categories", router.categoryRouter);
 app.use("/sub-categories", router.subCategoryRouter);
 app.use("/brands", router.brandRouter);
 app.use("/products", router.productRouter);
+app.use("/users", router.userRouter);
 
+// Error handling middleware
 app.use(globaleResponse);
 
 db_connection();

@@ -148,7 +148,7 @@ export const deleteCategory = async (req, res, next) => {
 
   // delete relivant images from cloudinary
   const categoryPath = `${process.env.UPLOADS_FOLDER}/Categories/${category?.customId}`;
-
+  //
   // delere relivant subcategories from db
   const deletedSubCategories = await SubCategory.deleteMany({
     categoryId: _id,

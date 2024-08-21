@@ -2,7 +2,7 @@ import { Router } from "express";
 // controllers
 import * as controller from "./sub-categories.controller.js";
 // middlewares
-import * as Middlewares from "../../Middlewares/index.js";
+import * as Middlewares from "../../middlewares/index.js";
 // models
 import { SubCategory } from "../../../DB/Models/index.js";
 // utils

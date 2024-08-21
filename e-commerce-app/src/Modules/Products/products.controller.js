@@ -142,7 +142,6 @@ export const updateProduct = async (req, res, next) => {
 
 /**
  * @api {get} /products/list  list all Products
- *
  */
 export const listProducts = async (req, res, next) => {
   // find all products

@@ -119,6 +119,3 @@ const productSchema = new Schema(
 
 export const Product =
   mongoose.models.Product || model("Product", productSchema);
-
-// Amira ezaat
-// amira-ezaat

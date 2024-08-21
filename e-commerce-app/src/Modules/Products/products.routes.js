@@ -2,7 +2,7 @@ import { Router } from "express";
 // controllers
 import * as controller from "./products.controller.js";
 // middlewares
-import * as Middlewares from "../../Middlewares/index.js";
+import * as Middlewares from "../../middlewares/index.js";
 // utils
 import { extensions } from "../../Utils/index.js";
 // models
